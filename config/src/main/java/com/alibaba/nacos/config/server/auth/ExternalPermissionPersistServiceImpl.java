@@ -21,7 +21,7 @@ import com.alibaba.nacos.config.server.model.Page;
 import com.alibaba.nacos.config.server.service.repository.PaginationHelper;
 import com.alibaba.nacos.config.server.service.repository.extrnal.ExternalStoragePersistServiceImpl;
 import com.alibaba.nacos.config.server.utils.LogUtil;
-import org.apache.commons.lang3.StringUtils;
+import com.alibaba.nacos.common.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -98,7 +98,7 @@ public class ExternalPermissionPersistServiceImpl implements PermissionPersistSe
     @Override
     public void addPermission(String role, String resource, String action) {
         
-        String sql = "INSERT into permissions (role, resource, action) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO permissions (role, resource, action) VALUES (?, ?, ?)";
         
         try {
             jt.update(sql, role, resource, action);
@@ -118,7 +118,7 @@ public class ExternalPermissionPersistServiceImpl implements PermissionPersistSe
     @Override
     public void deletePermission(String role, String resource, String action) {
         
-        String sql = "DELETE from permissions WHERE role=? and resource=? and action=?";
+        String sql = "DELETE FROM permissions WHERE role=? AND resource=? AND action=?";
         try {
             jt.update(sql, role, resource, action);
         } catch (CannotGetJdbcConnectionException e) {
